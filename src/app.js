@@ -58,19 +58,21 @@ app.get('/weather', (req,res) => {
                    error
                })
             }
-            forecast(Latitude, Longitude, (error, {Description, Temperature, Feels_like}= {} ) => {
+            forecast(Latitude, Longitude, (error, {Description, Temperature, Feels_like, LocalTime}= {} ) => {
                 if(error) {
                     return res.send({
                         error
                     })
                 }
+                
                 //console.log('Data:')
                 res.send({
                     address: req.query.address,
                     forecast: Description,
                     location: Location,
                     temperature: Temperature,
-                    feelsLike: Feels_like
+                    feelsLike: Feels_like,
+                    localTime: LocalTime
                 })
             })
         })
